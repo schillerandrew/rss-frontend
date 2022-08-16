@@ -6,27 +6,23 @@ import { Card, Text, Button, Group } from '@mantine/core';
 const { parse } = require('rss-to-json');
 const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/';
 
+let rssItems = [];
+// console.log(rssItems);
 (async () => {
-  var feed1 = await parse(
-    CORS_PROXY + 'https://www.reddit.com/r/MurderedByWords/.rss',
+  var feed = await parse(
+    CORS_PROXY + 'https://www.reddit.com/r/MurderedByWords/.rss'
   );
 
-  console.log(feed1);
-  console.log('CATEGORY');
+  // console.log(feed.items);
   for (let i = 0; i < 3; i++) {
-    feed1.items[i].statusRead = false;
-    console.log(`${[i + 1]}. ${feed1.items[i].title}`);
-    console.log(feed1.items[i].statusRead);
-  }
-})();
-
-function RssItem() {
-  return (
-    <>
+    feed.items[i].statusRead = false;
+    // feed.items[i].key = feed.items[i].id;
+    // console.log(feed.items[i].key);
+    rssItems.push(
       <Card shadow='sm' p='lg' radius='md' withBorder>
         {/* HEADER TEXT */}
         <Group position='apart' mt='md' mb='xs'>
-          <Text weight={500}>Norway Fjord Adventures</Text>
+          <Text weight={500}>{feed.items[i].title}</Text>
         </Group>
         {/* MIDDLE TEXT */}
         <Text size='sm' color='dimmed'>
@@ -38,8 +34,16 @@ function RssItem() {
           Book classic tour now
         </Button>
       </Card>
-    </>
-  );
+    );
+  }
+})();
+
+console.log(rssItems);
+
+// {items.forEach(feedItem => )}
+
+function RssItem() {
+  return <>{rssItems}</>;
 }
 
 export default RssItem;
