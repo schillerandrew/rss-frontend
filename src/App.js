@@ -1,4 +1,5 @@
 import RssItem from './Components/RssItem';
+import Auth from './Components/Auth';
 
 import { useState } from 'react';
 import {
@@ -36,6 +37,7 @@ function App() {
             hidden={!opened}
             width={{ sm: 200, lg: 300 }}>
             <Text>My Views</Text>
+            <Auth />
           </Navbar>
         }
         aside={
