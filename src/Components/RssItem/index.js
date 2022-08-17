@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Text, Button, Group } from '@mantine/core';
 
 import data from '../../data.json';
@@ -6,42 +6,21 @@ import data from '../../data.json';
 const axios = require('axios');
 
 function RssItem() {
-  let rssItems = data;
+  // let rssItems = data;
+  // console.log('HOWS THE DATA LOOKING', data);
+  const [rssItems, setRssItems] = useState(data);
 
-  // rssItems.push(rssItemtest);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     var feed = await parse(
-  //       CORS_PROXY + 'https://www.reddit.com/r/MurderedByWords/.rss'
-  //     );
-
-  //     for (let i = 0; i < 3; i++) {
-  //       feed.items[i].statusRead = false;
-  //       // rssItems.push(feed.items[i]);
-  //       // rssItems.push(rssItemtest);
-  //     }
-  //   })();
-
-  //   console.log(rssItems);
-  // }, []);
-
-  const getFeeds = async () => {
-    // const get = {
-    //   method: 'GET',
-    //   baseURL: 'http://localhost:3001',
-    //   url: '/feeds',
-    // }
-    try {
-      let request = await axios.get('http://localhost:3001/feeds');
-      console.log('REQ', request);
-      return request;
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  getFeeds();
+  useEffect(() => {
+    const getFeeds = async () => {
+      try {
+        let request = await axios.get('http://localhost:3001/feeds');
+        setRssItems(request.data[0].feedsArray[0].items);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    getFeeds();
+  }, []);
 
   return (
     <>
