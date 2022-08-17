@@ -14,7 +14,7 @@ function RssItem() {
     const getFeeds = async () => {
       try {
         let request = await axios.get('http://localhost:3001/feeds');
-        setRssItems(request.data[0].feedsArray[0].items);
+        setRssItems(request.data);
       } catch (e) {
         console.error(e);
       }
