@@ -27,7 +27,7 @@ function RssItem(props) {
       console.error(e);
     }
   };
-
+  
   console.log('DATA', data);
 
   return (
