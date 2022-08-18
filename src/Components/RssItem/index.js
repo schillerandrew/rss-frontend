@@ -2,34 +2,42 @@ import React, { useEffect, useState } from 'react';
 import { Card, Text, Button, Group } from '@mantine/core';
 import { withAuth0 } from '@auth0/auth0-react';
 
-import data from '../../data.json';
-
-const axios = require('axios');
-
 function RssItem(props) {
-  const [rssItems, setRssItems] = useState(data);
+  // const [rssItems, setRssItems] = useState(data);
 
-  useEffect(() => {
-    const processFeeds = async () => {
-      const feedsFromServer = await getFeeds();
-      console.log('FEEDS FROM SERVER', feedsFromServer);
-      setRssItems(feedsFromServer);
-    };
-    processFeeds();
-  }, []);
+  // useEffect(() => {
+  //   const getFeeds = async () => {
+  //     try {
+  //       let request = await axios.get('http://localhost:3001/feeds');
+  //       console.log('REQUEST', request.data.items);
+  //       setRssItems(request.data.items);
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   };
+  //   getFeeds();
+  //   // const processFeeds = () => {
+  //   //   const feedsFromServer = getFeeds();
+  //   //   console.log('FEEDS FROM SERVER', feedsFromServer);
+  //   //   // setRssItems(feedsFromServer);
+  //   // };
+  //   // processFeeds();
+  // }, []);
 
-  const getFeeds = async () => {
-    try {
-      let request = await axios.get('http://localhost:3001/feeds');
-      console.log('REQUEST', request);
-      setRssItems(request.data.items);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-  
-  console.log('DATA', data);
+  // const getFeeds = async () => {
+  //   try {
+  //     let request = await axios.get('http://localhost:3001/feeds');
+  //     console.log('REQUEST', request.data.items);
+  //     setRssItems(request.data.items);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
+  // console.log('DATA', data);
+  // console.log('RsssITEMS', rssItems);
+
+  const rssItems = [];
   return (
     <>
       {props.auth0.isAuthenticated

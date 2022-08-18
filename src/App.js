@@ -74,7 +74,7 @@ function App() {
         }>
         {/* APP COMNPONENTS GO HERE */}
         <Text>OUR APP</Text>
-        <RssItem />
+        {/* <RssItem /> */}
       </AppShell>
     </>
   );
