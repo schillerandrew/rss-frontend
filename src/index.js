@@ -8,17 +8,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain='dev-g1dh57yk.us.auth0.com'
-      clientId='UjeBPPYGrAbjKL8b29B63acSViCxzATV'
+      domain={process.env.REACT_APP_AUTHDOMAIN}
+      clientId={process.env.REACT_APP_AUTHCLIENTID}
       redirectUri={window.location.origin}>
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          colorScheme: 'dark',
+          colorScheme: 'dark'
         }}>
         <App />
       </MantineProvider>
     </Auth0Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
