@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { MantineProvider } from '@mantine/core';
 import { Auth0Provider } from '@auth0/auth0-react';
+import { Provider } from 'react-redux';
+import createStore from './Store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,10 +18,12 @@ root.render(
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          colorScheme: 'dark'
+          colorScheme: 'dark',
         }}>
-        <App />
+        <Provider store={createStore()}>
+          <App />
+        </Provider>
       </MantineProvider>
     </Auth0Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

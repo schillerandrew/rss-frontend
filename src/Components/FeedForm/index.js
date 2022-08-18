@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withAuth0 } from '@auth0/auth0-react';
 import { TextInput, Button, Group, Box } from '@mantine/core';
 import { useForm } from '@mantine/form';
@@ -6,25 +6,42 @@ import { useForm } from '@mantine/form';
 const axios = require('axios');
 
 const FeedForm = (props) => {
+  const [rssItems, setRssItems] = useState([]);
   const form = useForm({
     initialValues: {
-      rssFeedUrl: ''
-    }
+      rssFeedUrl: '',
+    },
   });
 
   const handleSubmit = (event) => {
     let payload = event;
     const sendDataToServer = async () => {
       try {
-        console.log('PAYLPOAD', payload);
-        let res = await axios.get(`http://localhost:3001/feeds?url=${payload.rssFeedUrl}`);
-        console.log('HANDLE SUBMIT', res);
+        // console.log('PAYLPOAD', payload);
+        // let res = await axios.get(
+        //   `http://localhost:3001/feeds?url=${payload.rssFeedUrl}`
+        // );
+        // console.log('HANDLE SUBMIT', res.data);
+        // setRssItems(res.data);
       } catch (error) {
         console.error(error);
       }
     };
     sendDataToServer();
   };
+
+  /// REDUX pass to parent then rssItems
+  console.log('RsssITEMS', rssItems);
+
+  // const getFeeds = async () => {
+  //   try {
+  //     let request = await axios.get('http://localhost:3001/feeds');
+  //     console.log('REQUEST', request.data.items);
+  //     // setRssItems(request.data.items);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
   return (
     <>
