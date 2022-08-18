@@ -11,6 +11,7 @@ root.render(
       domain={process.env.REACT_APP_AUTHDOMAIN}
       clientId={process.env.REACT_APP_AUTHCLIENTID}
       redirectUri={window.location.origin}>
+      {/* Component Library */}
       <MantineProvider
         withGlobalStyles
         withNormalizeCSS
