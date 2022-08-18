@@ -1,49 +1,59 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Text, Button, Group } from '@mantine/core';
+import { withAuth0 } from '@auth0/auth0-react';
 
 import data from '../../data.json';
 
 const axios = require('axios');
 
-function RssItem() {
-  // let rssItems = data;
-  // console.log('HOWS THE DATA LOOKING', data);
+function RssItem(props) {
   const [rssItems, setRssItems] = useState(data);
 
   useEffect(() => {
-    const getFeeds = async () => {
-      try {
-        let request = await axios.get('http://localhost:3001/feeds');
-        setRssItems(request.data[0].feedsArray[0].items);
-      } catch (e) {
-        console.error(e);
-      }
+    const processFeeds = async () => {
+      const feedsFromServer = await getFeeds();
+      console.log('FEEDS FROM SERVER', feedsFromServer);
+      setRssItems(feedsFromServer);
     };
-    getFeeds();
+    processFeeds();
   }, []);
+
+  const getFeeds = async () => {
+    try {
+      let request = await axios.get('http://localhost:3001/feeds');
+      console.log('REQUEST', request);
+      setRssItems(request.data.items);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  console.log('DATA', data);
 
   return (
     <>
-      {rssItems.map((rssItem) => {
-        return (
-          <Card shadow='sm' p='lg' radius='md' key={rssItem.id} withBorder>
-            <Group position='apart' mt='md' mb='xs'>
-              {/* TITLE TEXT */}
-              <Text weight={500}>{rssItem.title}</Text>
-            </Group>
-            {/* MIDDLE TEXT */}
-            <Text size='sm' color='dimmed'>
-              TEXT TO INPUT!!!!!!!!!!
-            </Text>
-            {/* BOTTOM BUTTON */}
-            <Button variant='light' color='blue' mt='md' radius='md'>
-              {rssItem.statusRead}
-            </Button>
-          </Card>
-        );
-      })}
+      {props.auth0.isAuthenticated
+        ? rssItems.map((rssItem) => {
+            return (
+              <Card shadow='sm' p='lg' radius='md' key={rssItem.id} withBorder>
+                <Group position='apart' mt='md' mb='xs'>
+                  {/* TITLE TEXT */}
+                  <Text weight={500}>{rssItem.title}</Text>
+                </Group>
+                {/* MIDDLE TEXT */}
+                <Text size='sm' color='dimmed'>
+                  {rssItem.contentSnippet}
+                </Text>
+                {/* BOTTOM BUTTON */}
+                <Button variant='light' color='blue' mt='md' radius='md'>
+                  {rssItem.link}
+                </Button>
+              </Card>
+            );
+          })
+        : null}
     </>
   );
 }
 
-export default RssItem;
+export default withAuth0(RssItem);
