@@ -8,9 +8,9 @@ import {
   Header,
   Footer,
   Aside,
-  Text,
   MediaQuery,
   Burger,
+  Title,
   useMantineTheme,
 } from '@mantine/core';
 import FeedForm from './Components/FeedForm';
@@ -37,21 +37,25 @@ function App() {
             hiddenBreakpoint='sm'
             hidden={!opened}
             width={{ sm: 200, lg: 300 }}>
-            <Text>My Views</Text>
-            <Auth />
+            <Title order={3} align='center'>
+              Home
+            </Title>
+            {/* <Text align='center'>Home</Text> */}
+            {/* <Auth /> */}
             <FeedForm />
           </Navbar>
         }
         aside={
           <MediaQuery smallerThan='sm' styles={{ display: 'none' }}>
             <Aside p='md' hiddenBreakpoint='sm' width={{ sm: 200, lg: 300 }}>
-              <Text>Application sidebar</Text>
+              {/* <Text>Application sidebar</Text> */}
+              <Auth />
             </Aside>
           </MediaQuery>
         }
         footer={
           <Footer height={60} p='md'>
-            Application footer
+            {/* Application footer */}
           </Footer>
         }
         header={
@@ -67,13 +71,16 @@ function App() {
                   mr='xl'
                 />
               </MediaQuery>
-
-              <Text>RSS Reader</Text>
+              <Title order={1}>RSS Reader</Title>
+              {/* <Text>RSS Reader</Text> */}
             </div>
           </Header>
         }>
         {/* APP COMNPONENTS GO HERE */}
-        <Text>OUR APP</Text>
+        <Title order={2} alight='center'>
+          Feeds
+        </Title>
+        {/* <Text>OUR APP</Text> */}
         <RssItem />
       </AppShell>
     </>
