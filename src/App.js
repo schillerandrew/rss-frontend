@@ -11,7 +11,7 @@ import {
   Text,
   MediaQuery,
   Burger,
-  useMantineTheme
+  useMantineTheme,
 } from '@mantine/core';
 import FeedForm from './Components/FeedForm';
 
@@ -26,8 +26,8 @@ function App() {
             background:
               theme.colorScheme === 'dark'
                 ? theme.colors.dark[8]
-                : theme.colors.gray[0]
-          }
+                : theme.colors.gray[0],
+          },
         }}
         navbarOffsetBreakpoint='sm'
         asideOffsetBreakpoint='sm'
@@ -74,7 +74,7 @@ function App() {
         }>
         {/* APP COMNPONENTS GO HERE */}
         <Text>OUR APP</Text>
-        {/* <RssItem /> */}
+        <RssItem />
       </AppShell>
     </>
   );

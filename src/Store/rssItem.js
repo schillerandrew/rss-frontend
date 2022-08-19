@@ -8,11 +8,19 @@ const SET_RSSITEM = 'SET_RSSITEM';
 export const addRssItem = createAction(ADD_RSSITEM);
 export const setRssItem = createAction(SET_RSSITEM);
 
-export const getRssItems = () => async (dispatch, getState) => {
-  let res = await axios.get(
-    `http://localhost:3001/feeds?url=${payload.rssFeedUrl}`,
-  );
-  dispatch(setRssItem(res.data));
+// let payload = {};
+
+export const getRssItems = (rssFeedUrl) => async (dispatch, getState) => {
+  if (rssFeedUrl) {
+    console.log('event.rssFeedUrl', rssFeedUrl);
+    let res = await axios.get(
+      `http://localhost:3001/feeds?url=${rssFeedUrl}`,
+    );
+    if (res.data) {
+      console.log('RES.DATA', res.data);
+      dispatch(setRssItem(res.data));
+    }
+  }
 };
 
 // create reducer
@@ -29,7 +37,7 @@ const rssItemReducer = createReducer(
       };
     },
     [SET_RSSITEM]: (state, action) => ({
-      list: action.payload,
+      list: [...state.list, ...action.payload],
     }),
   },
 );

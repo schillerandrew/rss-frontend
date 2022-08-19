@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Card, Text, Button, Group } from '@mantine/core';
 import { withAuth0 } from '@auth0/auth0-react';
 
 function RssItem(props) {
+  const rssItems = useSelector(state => state.rssItems.list);
   // const [rssItems, setRssItems] = useState(data);
 
   // useEffect(() => {
@@ -35,30 +37,29 @@ function RssItem(props) {
   // };
 
   // console.log('DATA', data);
-  // console.log('RsssITEMS', rssItems);
+  console.log('rssITEMS', rssItems);
 
-  const rssItems = [];
   return (
     <>
       {props.auth0.isAuthenticated
-        ? rssItems.map((rssItem) => {
-            return (
-              <Card shadow='sm' p='lg' radius='md' key={rssItem.id} withBorder>
-                <Group position='apart' mt='md' mb='xs'>
-                  {/* TITLE TEXT */}
-                  <Text weight={500}>{rssItem.title}</Text>
-                </Group>
-                {/* MIDDLE TEXT */}
-                <Text size='sm' color='dimmed'>
-                  {rssItem.contentSnippet}
-                </Text>
-                {/* BOTTOM BUTTON */}
-                <Button variant='light' color='blue' mt='md' radius='md'>
-                  {rssItem.link}
-                </Button>
-              </Card>
-            );
-          })
+        ? rssItems.map((rssItem, index) => {
+          return (
+            <Card shadow='sm' p='lg' radius='md' key={`rssItem-${index}`} withBorder>
+              <Group position='apart' mt='md' mb='xs'>
+                {/* TITLE TEXT */}
+                <Text weight={500}>{rssItem.title}</Text>
+              </Group>
+              {/* MIDDLE TEXT */}
+              <Text size='sm' color='dimmed'>
+                {rssItem.contentSnippet}
+              </Text>
+              {/* BOTTOM BUTTON */}
+              <Button variant='light' color='blue' mt='md' radius='md'>
+                {rssItem.link}
+              </Button>
+            </Card>
+          );
+        })
         : null}
     </>
   );
