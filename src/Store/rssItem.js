@@ -13,7 +13,8 @@ export const setRssItem = createAction(SET_RSSITEM);
 export const getRssItems = (rssFeedUrl) => async (dispatch, getState) => {
   if (rssFeedUrl) {
     // console.log('event.rssFeedUrl', rssFeedUrl);
-    let res = await axios.get(`https://rss-reader.herokuapp.com/feeds?url=${rssFeedUrl}`);
+    // let res = await axios.get(`https://rss-reader.herokuapp.com/feeds?url=${rssFeedUrl}`); old Heroku URL
+    let res = await axios.get(`https://fine-ruby-panther-kilt.cyclic.app/feeds?url=${rssFeedUrl}`); // new Cyclic URL
     if (res.data) {
       // console.log('RES.DATA', res.data);
       dispatch(setRssItem(res.data));
