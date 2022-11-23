@@ -32,7 +32,7 @@ const FeedForm = (props) => {
               })}>
               <TextInput
                 // required
-                label='Add Feed'
+                label='Add Feed (URL link to .xml file)'
                 placeholder='Enter RSS feed URL'
                 {...form.getInputProps('rssFeedUrl')}
               />
