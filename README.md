@@ -1,16 +1,17 @@
-# RSS-Frontend
+> # RSS-Frontend
 
-## Deployments
+## Features
 
-[Development](https://zippy-druid-cb7554.netlify.app/)
+- Authentication: log in with a user-created username and password, or use Auth0
+- RSS generation: Submit the URL of an RSS news feed, and links to each news article will generate on the screen
+   - The RSS feed that is submitted must be in XML format, although "xml" doesn't need to be in the file/URL name
+      - ex: "https://www.huffpost.com/section/front-page/feed?x=1" works successfully, but doesn't explicitly have "xml" in the URL
+      - ex: "https://rss.nytimes.com/services/xml/rss/nyt/World.xml" works successfully, and happens to have "xml" in the URL
+   - Links are added at the bottom, so scroll down to see more
 
-[Production](https://cerulean-swan-5dace7.netlify.app/)
+## Deployment
 
-## Team
-
-- Andrew Schiller
-- Marcus Hartwig
-- Dylan Ullrich
+[Production](https://leafy-lebkuchen-56aff4.netlify.app/)
 
 ## Languages and Technologies
 
@@ -34,25 +35,17 @@
 
 ## ENV Setup
 
-PORT - The port you choose to run locally.
+- PORT - The port you choose to run locally.
+- MONGO_DB_SECRET - The link to your MongoDB
+- REACT_APP_AUTHDOMAIN - from Auth0
+- REACT_APP_AUTHCLIENTID - from Auth0
 
-MONGO_DB_SECRET - The link to your MongoDB
-
-REACT_APP_AUTHDOMAIN - from Auth0
-
-REACT_APP_AUTHCLIENTID - from Auth0
-
-## How to Run
-
-- Clone FRONTEND and BACKEND repositories.
-- Install all dependencies.
-- Use `nodemon` to start backend.
-- Use `npm start` to start the frontend.
-
-## Features and Routes
-
-- Get feeds /feeds
-
-## Tests
+## Testing
 
 ![Tests](./src/img/tests.png)
+
+## Team
+
+- Andrew Schiller
+- Marcus Hartwig
+- Dylan Ullrich
