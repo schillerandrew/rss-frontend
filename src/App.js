@@ -9,7 +9,7 @@ import {
   Footer,
   // Aside,
   // MediaQuery,
-  Burger,
+  // Burger,
   Title,
   useMantineTheme,
 } from '@mantine/core';
@@ -17,7 +17,7 @@ import FeedForm from './Components/FeedForm';
 
 function App() {
   const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
+  // const [opened, setOpened] = useState(false);
   return (
     <>
       <AppShell
