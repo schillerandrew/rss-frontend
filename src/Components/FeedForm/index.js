@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { withAuth0 } from '@auth0/auth0-react';
-import { TextInput, Button, Group, Box } from '@mantine/core';
+import { TextInput, Button, Group, Box, Space } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { getRssItems } from '../../Store/rssItem';
 
@@ -30,18 +30,20 @@ const FeedForm = (props) => {
                 // console.log(values);
                 handleSubmit(values);
               })}>
-              <TextInput
-                // required
-                label='Add Feed (URL link to .xml file)'
-                placeholder='Enter RSS feed URL'
-                {...form.getInputProps('rssFeedUrl')}
-              />
-
-              <Group position='right' mt='md'>
+              <Group>
+                <TextInput
+                  // required
+                  // label='Add Feed (URL link to .xml file)'
+                  placeholder='Add Feed (URL link to .xml file)'
+                  {...form.getInputProps('rssFeedUrl')}
+                />
+                {/* <Group position='left' mt='md'> */}
                 <Button type='submit'>Submit</Button>
               </Group>
+              {/* </Group> */}
             </form>
           </Box>
+          <Space h="md" />
         </>
       ) : null}
     </>
