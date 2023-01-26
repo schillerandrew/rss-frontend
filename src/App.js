@@ -1,7 +1,7 @@
 import RssItem from './Components/RssItem';
 import Auth from './Components/Auth';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import {
   AppShell,
   Navbar,
@@ -35,7 +35,7 @@ function App() {
           <Navbar
             p='md'
             hiddenBreakpoint='sm'
-            hidden={!opened}
+            hidden={true}
             width={{ sm: 200, lg: 300 }}>
 
           </Navbar>
