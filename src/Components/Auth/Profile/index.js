@@ -1,6 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react';
 import { createStyles } from '@mantine/core';
+import './index.css';
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   img: {
@@ -30,7 +31,7 @@ const Profile = () => {
 
   return (
     isAuthenticated && (
-      <div>
+      <div className="profileCard">
         <img className={classes.img} src={user.picture} alt={user.name} />
         <p className={classes.p}>
           <strong>{user.name}</strong>
