@@ -1,7 +1,7 @@
 import RssItem from './Components/RssItem';
 import Auth from './Components/Auth';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import {
   AppShell,
   Navbar,
@@ -9,7 +9,7 @@ import {
   Footer,
   // Aside,
   // MediaQuery,
-  Burger,
+  // Burger,
   Title,
   useMantineTheme,
 } from '@mantine/core';
@@ -17,7 +17,7 @@ import FeedForm from './Components/FeedForm';
 
 function App() {
   const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
+  // const [opened, setOpened] = useState(false);
   return (
     <>
       <AppShell
@@ -35,7 +35,7 @@ function App() {
           <Navbar
             p='md'
             hiddenBreakpoint='sm'
-            hidden={!opened}
+            hidden={true}
             width={{ sm: 200, lg: 300 }}>
 
           </Navbar>
