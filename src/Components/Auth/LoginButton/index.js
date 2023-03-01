@@ -9,7 +9,7 @@ const LoginButton = () => {
     <>
     <Group>
       <Button onClick={() => loginWithRedirect()}>Log In</Button>
-      <Text>"Continue with Google" option at bottom of next screen is easiest!</Text>
+      <Text>After selecting the Log In button, using "Continue with Google" at the bottom is often easiest!</Text>
       </Group>
     </>
   );
